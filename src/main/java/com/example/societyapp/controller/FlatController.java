@@ -1,22 +1,21 @@
 package com.example.societyapp.controller;
 
 import com.example.societyapp.model.FlatInfo;
-import com.example.societyapp.service.FlatService;
+import com.example.societyapp.service.SocietyService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/flatinfo")
 public class FlatController {
-    FlatService flatService;
+    SocietyService societyService;
 
-    public FlatController(FlatService flatService) {
-        this.flatService = flatService;
+    public FlatController(SocietyService societyService) {
+        this.societyService = societyService;
     }
 
     @PostMapping
     public String updateFlatDetail(@RequestBody FlatInfo flatInfo){
-        flatService.uploadFlatDetails(flatInfo);
+        societyService.uploadFlatDetails(flatInfo);
         return "Successfully uploaded flat details";
     }
-
 }

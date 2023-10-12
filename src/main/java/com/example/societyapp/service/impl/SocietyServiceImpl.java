@@ -1,17 +1,19 @@
-package com.example.societyapp.service;
+package com.example.societyapp.service.impl;
 
 import com.example.societyapp.exception.NotFoundException;
+import com.example.societyapp.model.FlatInfo;
 import com.example.societyapp.model.User;
 import com.example.societyapp.pojo.UserQueryResult;
 import com.example.societyapp.repository.MyBatisRepository;
+import com.example.societyapp.service.SocietyService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService {
+public class SocietyServiceImpl implements SocietyService {
     MyBatisRepository myBatisRepository;
-    public UserService(MyBatisRepository myBatisRepository) {
+    public SocietyServiceImpl(MyBatisRepository myBatisRepository) {
         this.myBatisRepository = myBatisRepository;
     }
     public void createUser(User user){
@@ -31,5 +33,8 @@ public class UserService {
             throw new NotFoundException("Flat does not have any residents!");
         }
         return myBatisRepository.findFlatUsers(flatNumber);
+    }
+    public void uploadFlatDetails(FlatInfo flatInfo){
+        myBatisRepository.insertFlat(flatInfo);
     }
 }
