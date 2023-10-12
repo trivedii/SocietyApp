@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/society_info?useSSL=false
+    username: root
+    password: MYSQL@tt20#
+  #JPA Settings
+  jpa:
+    hibernate:
+      ddl-auto: update
